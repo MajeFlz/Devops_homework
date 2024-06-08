@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Информация о дисках') {
             steps {
-                sh 'df -h'
+                sh 'df -h --output=size'
             }
         }
     }
