@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'sudo apt-get update && sudo apt-get install -y maven' // Install Maven on the agent
+                sh 'apt-get update && sudo apt-get install -y maven' // Install Maven on the agent
                 sh 'mvn clean package'
             }
         }
