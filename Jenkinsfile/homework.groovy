@@ -7,5 +7,13 @@ pipeline {
                 sh 'df -h --output=size'
             }
         }
+        stage('Докер') {
+            steps {
+                dir('../docker') {
+                    dockerBuild('my-image', '.')
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
     }
 }
