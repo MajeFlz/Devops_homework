@@ -1,0 +1,12 @@
+FROM openjdk:8
+
+RUN mkdir /app
+COPY . /app
+
+WORKDIR /app
+
+RUN ["chmod", "+x", "index.html"]
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "my-web-app.jar"]
