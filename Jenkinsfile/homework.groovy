@@ -7,10 +7,11 @@ pipeline {
                 sh 'df -h'
             }
         }
-        stage('Докер') {
+       
+        stage('Build and deploy') {
             steps {
                 dir('../docker') {
-                    dockerBuild('my-image', '.')
+                    sh 'docker build -t my-image.'
                     sh 'docker-compose up -d'
                 }
             }
