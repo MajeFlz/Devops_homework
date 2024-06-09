@@ -2,15 +2,13 @@ version: '3'
 
 services:
   web:
-    build: ./nginx
+    build: .
     ports:
       - "80:80"
     restart: always
     depends_on:
       - db
-    environment:
-      - DATABASE_URL=postgres://admin:admin@db:5432/database_1
-
+      
   db:
     image: postgres:14
     environment:
