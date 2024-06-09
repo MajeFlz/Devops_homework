@@ -2,19 +2,23 @@ version: '3'
 
 services:
   web:
-    build: .
+    build: ./nginx
     ports:
-      - "8080:80"
+      - "80:80"
+    restart: always
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://user:password@db:5432/database
+      - DATABASE_URL=postgres://admin:admin@db:5432/database_1
 
   db:
-    image: postgres
+    image: postgres:14
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=database
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=database_1
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
