@@ -1,12 +1,6 @@
-FROM openjdk:8
+FROM nginx:latest
 
-RUN mkdir /app
-COPY . /app
+COPY conf.d/* /etc/nginx/conf.d/
+COPY index.html /usr/share/nginx/html/
 
-WORKDIR /app
-
-RUN ["chmod", "+x", "index.html"]
-
-EXPOSE 8080
-
-CMD ["java", "-jar", "my-web-app.jar"]
+CMD ["nginx", "-g", "daemon off;"]
